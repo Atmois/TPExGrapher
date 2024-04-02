@@ -14,20 +14,6 @@ app.post("/plot-data", (req, res) => {
     console.log("Received POST request for /plot-data");
     const itemID = req.body.itemID;
     console.log("Item ID:", itemID);
-    const filePath = path.join(__dirname, `./ItemValues/${itemID}.csv`);
-
-    fs.readFile(filePath, "utf8", (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send("Error reading file");
-        }
-
-        const lines = data.split("\n");
-        const dates = lines[0].split(",").slice(1);
-        const prices = lines[1].split(",").slice(1).map(parseFloat);
-
-        const plotData = dates.map((date, index) => ({ date, value: prices[index] }));
-
-        res.json(plotData);
-    });
+    res.json({ message: "Request received" });
 });
+
