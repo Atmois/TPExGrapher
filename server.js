@@ -1,4 +1,4 @@
-// This base of this code is AI generated (I know fuckall about JS serverside lmao), so it's very sketchy and not representitive of my programming abilites 
+// This base of this code is AI generated & docs code (I know fuckall about JS serverside lmao), so it's very sketchy and not representitive of my programming abilites 
 console.log("Server Code Online!")
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -9,6 +9,11 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+const port = process.env.PORT || 3001;
+
+const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;
 
 app.post("/plot-data", (req, res) => {
     console.log("Received POST request for /plot-data");
