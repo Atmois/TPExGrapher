@@ -1,18 +1,11 @@
 {
-  "name": "tpex_grapher",
+  "name": "tpexgrapher",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
-  "scripts": {
-    "test": "node server.js"
-  },
-  "keywords": [],
-  "author": "Atmois",
-  "license": "AGPL-3.0",
+  "repository": "https://github.com/Atmois/TPExGrapher.git",
+  "author": "Atmois <atmois@atmois.com>",
+  "license": "AGPLv3",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "csv-parser": "^3.0.0",
     "express": "^4.19.2"
   }
 }
