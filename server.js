@@ -17,7 +17,18 @@ server.headersTimeout = 120 * 1000;
 app.post("/plot-data", (req, res) => {
   const itemID = req.body.itemID;
   console.log("Received POST request for /plot-data for the item", itemID);
-  const filePath = path.join(__dirname, `./ItemValues/${itemID}.csv`);
+
+  if (!/^[a-z_]+$/.test(itemID)) {
+    console.error('Invalid itemID: Only lowercase letters and underscores are allowed');
+    return res.status(400).send("Bad Request: Invalid itemID");
+  }
+
+  const filePath = path.resolve(__dirname, `./ItemValues/${itemID}.csv`);
+
+  if (!filePath.startsWith(path.resolve(__dirname, './ItemValues'))) {
+    console.error("Attempted path traversal outside of ItemValues directory");
+    return res.status(403).send("Forbidden: Attempted path traversal outside of ItemValues directory");
+  }
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
