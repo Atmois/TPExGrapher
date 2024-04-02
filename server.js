@@ -3,14 +3,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
-const cors = require("cors"); 
+const cors = require("cors");
 
 const app = express();
-app.use(cors()); 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post("/plot-data", (req, res) => {
+    console.log("Received POST request for /plot-data");
     const itemID = req.body.itemID;
+    console.log("Item ID:", itemID);
     const filePath = path.join(__dirname, `./ItemValues/${itemID}.csv`);
 
     fs.readFile(filePath, "utf8", (err, data) => {
