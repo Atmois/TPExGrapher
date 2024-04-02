@@ -1,4 +1,5 @@
 // This base of this code is AI generated (I know fuckall about JS serverside lmao), so it's very sketchy and not representitive of my programming abilites 
+console.log("Server Code Online!")
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
